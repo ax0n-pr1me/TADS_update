@@ -9,7 +9,6 @@
   become: True
   roles:
     - role: geerlingguy.pip
-      pip_package: python3-pip
       pip_executable: pip3
       vars:
         pip_install_packages:

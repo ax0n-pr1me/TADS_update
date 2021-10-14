@@ -47,5 +47,6 @@
       become: True
       apt:
         name: python3-pip
+        update_cache: true
 
     # ADD YOUR OWN TASKS HERE
