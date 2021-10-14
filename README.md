@@ -18,8 +18,6 @@
   - [1. Make this repository yours](#1-make-this-repository-yours)
   - [2. Install the required dependencies](#2-install-the-required-dependencies)
   - [3. Provision your local machine and deploy the example stack](#3-provision-your-local-machine-and-deploy-the-example-stack)
-    - [3.1 Configure localhost overrides](#31-configure-localhost-overrides)
-    - [3.2 Provision and Deploy](#32-provision-and-deploy)
   - [4. Write your own Docker Swarm Compose files](#4-write-your-own-docker-swarm-compose-files)
   - [5. Test on a Vagrant cluster](#5-test-on-a-vagrant-cluster)
   - [6. Edit and encrypt your production environment variables](#6-edit-and-encrypt-your-production-environment-variables)
@@ -150,22 +148,21 @@ You can also manually install the dependencies if your preferer.
 
 ### 3. Provision your local machine and deploy the example stack
 
-#### 3.1 Configure localhost overrides
-
-Duplicate and rename [./ansible/group_vars/localhost_overrides.sample.yml](./ansible/group_vars/localhost_overrides.sample.yml) to ./ansible/group_vars/localhost_overrides.yml and add your username (hint: `whoami`) as the ansible role.
+1. Copy `ansible/group_vars/localhost_overrides.sample.yml` to `ansible/group_vars/localhost_overrides.yml`  
+2. Add `ansible_user` variable with your user name
 
 ```raw
 ansible_user: <yourUserName>
 ```
 
-#### 3.2 Provision and Deploy
+3. Provision and Deploy
 
 ```bash
 ./tads ansible-playbook localhost provision
 ./tads ansible-playbook localhost deploy
 ```
 
-The first command will:
+The first `./tads` command will:
 
 - Install Docker on your local machine
 - Set up a Swarm cluster with one manager node
